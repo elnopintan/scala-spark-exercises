@@ -7,3 +7,4 @@ El árbol tiene 3 tipos de nodo
 - Rama. Tiene un valor numérico y 2 nodos hijos
 - Nil. Representa un nodo sin valor
 
+Edita esta [clase](src/main/scala/exercise/BinaryTree.scala)
