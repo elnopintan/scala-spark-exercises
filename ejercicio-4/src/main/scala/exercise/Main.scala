@@ -13,5 +13,9 @@ object Main {
 
   }
 
-  def wordCount(lines: Seq[String]) : Seq[(String, Int)] = ???
+  def wordCount(lines: Seq[String]) : Seq[(String, Int)] = {
+    val words = lines.flatMap(_.split(" "))
+    val keyValue = words.map(_ -> 1)
+    keyValue.reduceByKey((a, b) => a + b)
+  }
 }

@@ -23,7 +23,10 @@ class Leaf(value: Int) extends BinaryTree {
   override def members: Int = 1
 
   override def insertBalanced(v: Int): BinaryTree =
-    if (v < value) new Branch(value, new Leaf(v), Nil) else new Branch(value, Nil, new Leaf(v))
+    if (v < value)
+      new Branch(value, new Leaf(v), Nil)
+    else
+      new Branch(value, Nil, new Leaf(v))
 }
 
 class Branch(value: Int, left: BinaryTree, right: BinaryTree) extends BinaryTree {
