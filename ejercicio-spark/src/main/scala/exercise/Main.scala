@@ -39,6 +39,6 @@ object Main extends App {
     val count = countNoDownloads(views)
     println(s"There are $count that weren't visited today")
   } else {
-    println("Usage: The process needs 2 arguments. <pageview file> and <country code file">)
+    println("Usage: The process needs 2 arguments. <pageview file> and <country code file>")
   }
 }
