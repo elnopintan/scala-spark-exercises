@@ -21,6 +21,7 @@ trait CountNoDownloads {
     acc.value
   }
 
-  def runCount(acc: LongAccumulator, views: RDD[PageView]): Unit = ???
-
+  def runCount(acc: LongAccumulator, views: RDD[PageView]): Unit = views.foreach { view =>
+    if (view.traffic == 0) acc.add(1)
+  }
 }
