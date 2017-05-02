@@ -14,8 +14,10 @@ import org.apache.spark.rdd.RDD
 
 trait MostVisitedWebRDD {
 
-  def getMostVisitedWebAt(country: String, views: RDD[PageView]): String = ???
+  def getMostVisitedWebAt(country: String, views: RDD[PageView]): String =
+    views.filter(_.countryCode == country).sortBy(_.visits, false).map(_.page).first
 
-  def topVisitingCountries(number: Int, views: RDD[PageView]): Array[String] = ???
+  def topVisitingCountries(number: Int, views: RDD[PageView]): Array[String] =
+    views.map(view => (view.countryCode, view.visits)).reduceByKey(_ + _).sortBy(_._2, false).map(_._1).take(number)
 }
 

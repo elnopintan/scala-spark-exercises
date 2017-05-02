@@ -24,5 +24,13 @@ import org.apache.spark.rdd.RDD
 
 trait PageViewReader {
 
-  def readPageView(fields: RDD[Array[String]]): RDD[PageView] = ???
+  def readPageView(fields: RDD[Array[String]]): RDD[PageView] = {
+    fields.map {
+      case Array(countryAndProject, page, visits, traffic) =>
+        val splittedCode = countryAndProject.split('.')
+        val country = splittedCode.head
+        val project = splittedCode.tail.mkString(".")
+        PageView(country, project, page, visits.toLong, traffic.toLong)
+    }
+  }
 }

@@ -13,5 +13,5 @@ import org.apache.spark.rdd.RDD
   */
 
 trait CsvReader {
-  def readCsv(text: RDD[String], delimiter: String) : RDD[Array[String]] = ???
+  def readCsv(text: RDD[String], delimiter: String) : RDD[Array[String]] = text.map(_.split(delimiter))
 }

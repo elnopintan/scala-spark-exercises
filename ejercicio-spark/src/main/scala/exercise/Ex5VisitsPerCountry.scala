@@ -17,5 +17,11 @@ import org.apache.spark.rdd.RDD
 
 trait VisitsPerCountry {
 
-  def visitsPerCountry(countryNames: Map[String, String], views: RDD[PageView], outputFile: String): Unit = ???
+  def visitsPerCountry(countryNames: Map[String, String], views: RDD[PageView], outputFile: String): Unit = {
+    val sc = views.sparkContext
+    val bCountries = sc.broadcast(countryNames)
+    views.map(view => (view.countryCode, view.visits)).reduceByKey(_ + _).map {
+      case (countryCode, visits) => s"${bCountries.value.getOrElse(countryCode, countryCode)}|$visits"
+    }.saveAsTextFile(outputFile)
+  }
 }
