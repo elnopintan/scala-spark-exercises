@@ -30,7 +30,7 @@ Una vez descomprimido se ejecutar una consola de Spark usando el siguiente coman
  haya descomprimido Spark
 
 ```bash
- spark-shell.<sh o cmd> --jar <path del proyecto>/target/scala-2.11/ejercicio-spark_2.11-1.0.jar
+ spark-shell.<sh o cmd> --jars <path del proyecto>/target/scala-2.11/ejercicio-spark_2.11-1.0.jar
 ```
 
 Una vez abierta la consola de scala se puede ejecutar:
@@ -45,3 +45,12 @@ scala> val text = sc.textFile("<path de pageview>/pageviews-20170405-000000.gz")
 ```
 
 Esto generará el RDD que debe utilizarse como argumento del primer ejercicio
+
+
+Una vez terminados todos los ejercicios, se puede ejecuar spark-submit para validar el ejercicio
+
+
+```bash 
+  spark-submit <path del proyecto>/target/scala-2.11/ejercicio-spark_2.11-1.0.jar <csv wikimedia> <coutry-codes.csv>
+```
+

@@ -10,7 +10,8 @@ object Utils extends
     MostVisitedWebRDD with
     MostVisitedWebDF with
     VisitsPerCountry with
-    CountNoDownloads
+    CountNoDownloads with
+    Serializable
 {
 
   def createViewsDF(spark: SparkSession, views: RDD[PageView]): Dataset[PageView] = {
